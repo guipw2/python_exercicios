@@ -6,9 +6,8 @@ partidas = int(input(f'Quantas partidas {dici["nome"]} jogou?: '))
 for c in range(0, partidas):
     gols = int(input(f'    Quantos gols na {c + 1}ª partida?: '))
     gol.append(gols)
-    tot += gols
 dici['gols'] = gol[:]
-dici['total'] = tot
+dici['total'] = sum(gol)
 print('-=' * 25)
 print(dici)
 print('-=' * 25)
