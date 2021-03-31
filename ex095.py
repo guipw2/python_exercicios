@@ -4,7 +4,7 @@ team = list()
 while True:
     tot = 0
     player['name'] = str(input("Player's name: "))
-    partidas = int(input(f'how many matches {player["name"]} played?: '))
+    partidas = int(input(f'How many matches {player["name"]} played?: '))
     for c in range(1, partidas + 1):
         if c == 1:
             pos = 'st'
@@ -14,10 +14,8 @@ while True:
             pos = 'rd'
         else:
             pos = 'th'
-        goal = int(input(f'    how many goals in the {c}{pos} match?: '))
-        goals.append(goal)
-        tot += goal
-    player["total"] = tot
+        goals.append(int(input(f'    How many goals in the {c}{pos} match?: ')))
+    player["total"] = sum(goals)
     player["goal"] = goals[:]
     goals.clear()
     team.append(player.copy())
@@ -29,7 +27,28 @@ while True:
     if continu3 in 'Nn':
         break
 print('-=' * 30)
-print(f'{"cod":<} {"name":<1} {"goals":^30} {"total":>5}')
-print('_' * 45)
-for c, v in enumerate(team):
-    print(f'{c:<}{v["name"]:<1}{v["goal"]:^30}{v["total"]:>5}')
+print(f'{"code":<} {"name":<1} {"goals":^30} {"total":>10}')
+print('__' * 26)
+for k, v in enumerate(team):
+    print(f'{k:>4} {str(v["name"]):<17}{str(v["goal"]):<24}{str(v["total"]):<5}')
+print('__' * 26)
+while True:
+    show = int(input('Show data for which player? (999 to stop): '))
+    if show == 999:
+        break
+    elif show > len(team):
+        print(f'ERROR! There is no player with code {show}')
+    else:
+        print(f" -- {team[show]['name']}'s GOAL LIST:")
+        for i, g in enumerate(team[show]['goal']):
+            if i == 1:
+                pos = 'st'
+            elif i == 2:
+                pos = 'nd'
+            elif i == 3:
+                pos = 'rd'
+            else:
+                pos = 'th'
+            print(f'    In the {i+1}{pos} game he scored {g} goals')
+    print('__' * 26)
+print('<< CHECK BACK OFTEN >>')
