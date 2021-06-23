@@ -1,0 +1,8 @@
+Carla;43
+Simone;40
+Saulo;40
+Guilherme;15
+pedro;12
+
+p;1
+l;23
